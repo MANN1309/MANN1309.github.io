@@ -20,10 +20,15 @@ html {
           color: #fff;
           transition: 0.1s color;
         }
-
+//상단 페이지 링크 css 목표 : 커서 호버링 시 색상 변경 및 transition 0.5s
         @include media-query($on-laptop) {
           .page-link {
             color: $header-text-color;
+            transition: 0.1s color;
+            text-decoration: none;
+          }
+          &:hover {
+            color: rgba(136, 161, 255, 0.57);
           }
 
           .menu-icon {
