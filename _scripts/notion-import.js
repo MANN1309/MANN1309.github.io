@@ -72,7 +72,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     });
     pages.push(...response.results); // 이전 결과와 병합
   }
-  
+
   for (const r of pages) {
     const id = r.id;
     // date

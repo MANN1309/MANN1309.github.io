@@ -22,18 +22,18 @@ jobs:
     
       - name: Clean Directory
         run: |
-          for file in assets/images/*
+          for file in assets/imgs/*
           do
-              if [[ $file != "assets/images/favicons" ]]
+              if [[ $file != "assets/imgs/favicons" ]]
               then
                   rm -rf "$file"
               fi
           done
           rm -rf _posts/*
       
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          node-version: "17"
 
       - run: npm install
 
@@ -73,7 +73,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.4' # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
+          ruby-version: '3.1' # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
           bundler-cache: true
 
       - name: Build site
