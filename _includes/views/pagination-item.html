@@ -17,15 +17,10 @@
 {%- include functions.html func='get_value' -%}
 {%- assign image_height = return | default: '160px' -%}
 
-{%- assign name = 'excerpt.default_image' -%}
-{%- include functions.html func='get_value' -%}
-{%- assign default_image = return -%}
-
 {%- assign post_image = post.excerpt_image
   | default: post.banner.image
-  | default: post.banner
-  | default: default_image
-  | default: '/assets/images/default-image.jpeg' -%}
+  | default: post.banner -%}
+<!-- default: post.banner (마지막까지 설정된 사진이 없는 경우 본문에 사용된 이미지를 미리보기로 설정하기.) -->
 
 <li class="post-item {{ post_item_class }}">
   <h2 class="post-title">
@@ -43,7 +38,7 @@
   </div>
   <div class="post-excerpt">
     {%- if post_image and post_image != 'NO_EXCERPT_IMAGE' -%}
-    <a  class="post-image" href="{{ post_url }}" style="flex: 0 1 {{ image_width }}">
+      <a  class="post-image" href="{{ post_url }}" style="flex: 0 1 {{ image_width }}">
       <div style="background-image: url({{ post_image | relative_url }}); height: {{ image_height }}"></div>
     </a>
     {%- endif -%}

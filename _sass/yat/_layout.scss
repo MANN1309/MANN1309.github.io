@@ -112,7 +112,7 @@ html {
 
     .site-favicon {
       display: inline-block;
-      height: #{$header-height / 1.5};
+      height: calc(#{$header-height} / 1.5);
       margin-right: 5px;
     }
   }
@@ -700,7 +700,7 @@ html {
   }
 
   @include media-query($on-palm) {
-    height: #{$banner-height / 1.5};
+    height: calc(#{$banner-height} / 1.5);
   }
 }
 
@@ -713,6 +713,20 @@ html {
 
   .main {
     @extend %flex-1;
+
+    // main-title in post
+    .title { 
+      font-size: 34px;
+      margin-top: 55px;
+      margin-bottom: 60px;
+
+      /* 모바일 화면에서의 margin-top */
+      @include media-query($on-palm) {
+            font-size: 32px;
+            margin-top: 25px;
+            margin-bottom: 30px;
+      }
+    }
   }
 
   .sidebar {

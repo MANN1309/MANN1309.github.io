@@ -243,7 +243,7 @@ banner:
 
 # Excerpt settings 미리보기 세팅
 excerpt:
-  default_image: /assets/images/default-image.jpeg  # Default image when the image style is not none | 이미지 스타일이 none이 아닐 때의 기본 이미지
+  # default_image: /assets/images/default-image.jpeg  # Default image when the image style is not none | 이미지 스타일이 none이 아닐 때의 기본 이미지 ** 해당 코드 제거함. (사용불가)
   image_style: z          # Image layout style (It's value could be none, left, right, top, z, z-reverse)
   image_width: 38.2%      # Image default width
   image_height: 160px     # Image default height

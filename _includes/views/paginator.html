@@ -4,6 +4,7 @@
 
 {% if paginator.posts.size > 0 %}
   <div class="paginator">
+
     <span class="previous">
     {% if paginator.previous_page %}
       <a href="{{ paginator.previous_page_path | relative_url }}">Prev</a>
@@ -11,7 +12,6 @@
       <span>Prev</span>
     {% endif %}
     </span>
-
     <span class="indicator"> {{ paginator.page }}/{{ paginator.total_pages }}</span>
 
     <span class="next">
