@@ -143,12 +143,23 @@ title: "${title}"${fmtags}${fmcats}
     let index = 0;
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
-      function (match, p1, p2, p3) {
-        const dirname = path.join("assets/img", ftitle);
-        if (!fs.existsSync(dirname)) {
-          fs.mkdirSync(dirname, { recursive: true });
-        }
-        const filename = path.join(dirname, `${index}.png`);
+  //노션의 이미지 URL 그대로 사용 (웹 직접참조)
+  //![example image](URL "Title")
+      function (match, altText, imageUrl) {
+        const title = altText ? `"${altText}"` : "";
+        return `![${altText}](${imageUrl} ${title})`; 
+
+//--------------------------------------
+  //기존 이미지 전달방식 (/assets/img/example.png)
+  //![index](/assets/img/example.png)
+    
+      // function (match, p1, p2, p3) {
+      //   const dirname = path.join("assets/img", ftitle);
+      //   if (!fs.existsSync(dirname)) {
+      //     fs.mkdirSync(dirname, { recursive: true });
+      //   }
+      //   const filename = path.join(dirname, `${index}.png`); 
+
 
         axios({
           method: "get",
