@@ -1,0 +1,20 @@
+{
+    "name": "woosm_blog",
+    "version": "1.0.0",
+    "description": "A Jekyll blog with Notion integration",
+    "main": "_scripts/notion-import.js",
+    "scripts": {
+        "fetch": "node _scripts/notion-import.js"
+    },
+    "keywords": [],
+    "author": "Woosm",
+    "license": "ISC",
+    "devDependencies": {
+        "@notionhq/client": "^2.2.15",
+        "@types/node-fetch": "^2.6.11",
+        "moment": "^2.30.1",
+        "node-fetch": "^3.3.2",
+        "notion-to-md": "^3.1.1",
+        "axios": "^1.7.2"
+    }
+}

@@ -1,0 +1,323 @@
+# Welcome to Jekyll!
+#
+# About Theme
+#
+# Yet another theme for elegant writers with modern flat style and beautiful
+# night/dark mode.
+#
+# Website: https://github.com/jeffreytse/jekyll-theme-yat
+#
+# You can do anything you want, including projects for your clients, as long
+# as you mention an attribution back (credit links in footer or project).
+# See the LICENCE file.
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you
+# use 'bundle exec jekyll serve'. If you change this file, please restart
+# the server process.
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+# Jekyll에 오신 것을 환영합니다!
+#
+# 테마 정보
+#
+# 최신 flat 스타일 및 아름다운 야간/다크 모드를 갖춘 우아한 작가를 위한 또 다른 테마.
+#
+# 웹사이트: https://github.com/jeffreytse/jekyll-theme-yat
+#
+# 당신은 원하는 모든 것을 할 수 있습니다. 클라이언트 프로젝트 포함, 
+# 해당하는 경우에는 크레딧 링크(footer 또는 프로젝트 내에서)를 언급하면 됩니다. 
+# LICENCE 파일을 참조하세요.
+#
+# 이 설정 파일은 블로그 전체에 영향을 미치는 설정에 대한 것으로, 
+# 한 번 설정하고 그 후에는 드물게 편집해야 하는 값을 의미합니다.
+#
+# 기술적인 이유로, 이 파일은 'bundle exec jekyll serve'를 사용할 때 자동으로 
+# 다시로드되지 *않습니다. 이 파일을 변경한 경우 서버 프로세스를 다시 시작하세요.
+#
+# 사이트 설정
+# 이것들은 당신의 새로운 사이트를 개인화하는 데 사용됩니다. HTML 파일을 확인하면
+# {{ site.title }}, {{ site.email }} 등을 통해 액세스할 수 있습니다.
+# 원하는대로 사용자 지정 변수를 만들어서 템플릿에서 {{ site.myvariable }}을 통해
+# 액세스할 수 있습니다.
+
+title: WooSM Blog
+email: your-email@domain.com
+author: WooSM
+
+# Copyright setting
+# You can use any html code, currently below placeholders are available:
+# * current year: {currentYear}
+# * author: {author} (Value is the same as site.author)
+# * copyright: (c) - ©
+# * copyleft: (cleft)
+# * sound recording copyright: (p) - ℗
+#
+# For example:
+#   "Copyright (c) 2017-{currentYear} <a href="https://example.com">{author}</a>"
+#   "Copyright © 2017-2021 Foobar"
+#
+
+# 저작권 설정
+# 아래 플레이스홀더를 사용할 수 있습니다:
+# * 현재 연도: {currentYear}
+# * 저자: {author} (값은 site.author와 동일함)
+# * 저작권: (c) - ©
+# * Copyleft: (cleft)
+# * 사운드 녹음 저작권: (p) - ℗
+#
+# 예시:
+#   "Copyright (c) 2017-{currentYear} <a href="https://example.com">{author}</a>"
+#   "Copyright © 2017-2021 Foobar"
+#
+copyright: "Copyright (cleft) 2024-{currentYear} {WooSM}"
+
+description: >- # this means to ignore newlines until "baseurl:" / 이것은 "baseurl"까지 무시하도록 합니다.
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+# 여기에 새로운 사이트에 대한 멋진 설명을 작성하세요. 이 줄을 _config.yml에서 편집할 수 있습니다.
+# Google 검색 결과에 나타날 것입니다.
+
+baseurl: "" # the subpath of your site, e.g. /blog | 당신의 사이트의 서브 패스, 예: /blog
+url: "https://MANN1309.github.com" # the base hostname & protocol for your site, e.g. https://example.com | 당신의 사이트의 기본 호스트 이름 및 프로토콜, 예: https://example.com
+favicon: "" # the favicon for your site | 당신의 사이트의 파비콘
+
+# Yat date format | Yat 날짜 형식
+# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this | 사용자 지정하려면 https://shopify.github.io/liquid/filters/date/를 참조하세요.
+yat:
+  date_format: "%b %d, %Y"
+
+# If you want more debug log, you can set true
+# 더 많은 디버그 로그를 원한다면 true로 설정할 수 있습니다
+debug: false
+
+# If you don't want transparent header, you can set false
+# 투명 헤더를 원하지 않는 경우 false로 설정할 수 있습니다
+header_transparent: true
+
+# If you want to change the content width, you can set to another value
+# 콘텐츠 너비를 변경하려면 다른 값으로 설정할 수 있습니다
+# content_width: "920px"
+
+# Google analytics - GA4
+# google_analytics: [Measurement ID]
+# enableDNT: "false"
+
+# If you want to generate website sitemap, you can set true | 웹사이트 사이트맵을 생성하려면 true로 설정할 수 있습니다
+sitemap: false
+
+# If you want to change site language, you can set lang option | 사이트 언어를 변경하려면 lang 옵션을 설정할 수 있습니다
+lang: "en"  # default lang is en | # 기본 언어는 en입니다
+
+# Translate languges
+# langs refer to https://cloud.google.com/translate/docs/languages
+# translate_langs:
+#   - lang: en
+#     img: https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png
+#     text: English
+#
+#   - lang: fr
+#     img: https://cdn.countryflags.com/thumbs/france/flag-400.png
+#     text: French
+#
+#   - lang: zh-CN
+#     img: https://cdn.countryflags.com/thumbs/china/flag-400.png
+#     text: Chinese(Simple)
+#
+#   - lang: ja
+#     img: https://cdn.countryflags.com/thumbs/japan/flag-400.png
+#     text: Japanese
+#
+#   - lang: ko
+#     img: https://cdn.countryflags.com/thumbs/south-korea/flag-400.png
+#     text: Korean
+#
+#   - lang: ru
+#     img: https://cdn.countryflags.com/thumbs/russia/flag-400.png
+#     text: Russian
+
+# You can choose a theme color
+# Default theme colors as below:
+# 테마 색상 선택 가능
+# 기본 테마 색상은 다음과 같습니다:
+# coolblack: #090a0b
+# spacegrey: #353535
+# snowwhite: #ffffff
+#
+# theme_color: snowwhite
+#
+# Custom color as below: | 사용자 정의 색상은 다음과 같습니다:
+# theme_color: "#882250" #커스텀 테마 컬러 (header)
+
+# You can choose a brand color
+# Default brand colors as below:
+# 브랜드 색상 선택 가능
+# 기본 브랜드 색상은 다음과 같습니다:
+# orangered: #ff5100
+# greatgold: #f2cb05
+# greenblue: #389092
+#
+# brand_color: orangered
+#
+# Custom color as below:
+# 사용자 정의 색상은 다음과 같습니다:
+brand_color: "#659cdb"
+
+# You can custom selection style
+# 선택 스타일 사용자 정의 가능
+# selection:
+#   color: "#ff00ff"
+#   background_color: "yellow"
+
+# Night/Dark mode
+# Default mode is "auto", "auto" is for auto nightshift
+# (19:00 - 07:00), "manual" is for manual toggle, and
+# "on/off" is for default on/off.
+#
+# Whatever the user's choice is, it will supersede the
+# default setting of the site and be kept during the
+# visit (session). Only the dark mode setting is"manual",
+# it will be always kept on every visit (i.e. no matter
+# the browser is closed or not)
+# 사용자의 선택에 관계없이
+# 사이트의 기본 설정을 무시하고 방문 동안 유지되며
+# 세션 중에 (방문자가 이동하더라도) 항상 야간 모드 설정이 "수동"인 경우입니다.
+#
+night_mode: "auto"
+
+# Code badge setting
+# You can enable or disable the code badge and so on
+# 코드 배지 설정
+# 코드 배지를 활성화 또는 비활성화하고 사용자 지정할 수 있습니다
+
+code_badge: # TOP, NEW 배지
+  enabled: "true"
+  color: "#fff"
+  background_color: "#ff4e00"
+  text_transform: "uppercase"  # ("uppercase", "lowercase", "capitalize")
+
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+# 헤더에서 특정 페이지에만 링크하려면 해제하고
+# 이곳에 페이지 경로를 추가하세요
+header_pages:
+  - index.html
+  - archives.html
+  - categories.html
+  - tags.html
+  - about.md
+
+# Page default value
+defaults:
+  home:
+    heading: "WooSM's Blog"
+    subheading: "나의 일기장"
+    banner: ""
+
+# Banner default settings
+# These banner settings are for global banner default, but you can also
+# config it by the front matter for one specific post
+# 배너 기본 설정
+# 이 배너 설정은 전역 배너 기본값입니다. 그러나 특정 게시물에 대한
+# 프론트 매터로도 구성할 수 있습니다
+banner:
+  video: null             # Video banner source
+  loop: true              # Video loop
+  volume: 0               # Video volume (100% is 1.0)
+  start_at: 0             # Video start time
+  image: null             # Image banner source
+  opacity: 1.0            # Banner opacity(투명도) (100% is 1.0)
+  background: "rgba(0, 0, 0, 0.8)"  # Banner background (Could be a image)
+  height: "640px"         # Banner default height
+  min_height: null        # Banner minimum height
+  heading_style: null     # Custom heading style | 사용자 정의 제목 스타일 (e.g. "font-weight: bold; text-decoration: underline")
+  subheading_style: null  # Custom subheading style | 사용자 정의 부제목 스타일 (e.g. color: gold)
+
+# Excerpt settings 미리보기 세팅
+excerpt:
+  # default_image: /assets/images/default-image.jpeg  # Default image when the image style is not none | 이미지 스타일이 none이 아닐 때의 기본 이미지 ** 해당 코드 제거함. (사용불가)
+  image_style: z          # Image layout style (It's value could be none, left, right, top, z, z-reverse)
+  image_width: 38.2%      # Image default width
+  image_height: 160px     # Image default height
+  text_size: 350          # Words default size
+
+# Pagination setting 여러 페이지에 걸쳐 게시물을 나누는 설정을 다룹니다. 이는 특히 블로그 형식의 사이트에서 사용자가 한 번에 많은 포스트를 보는 대신, 페이지별로 나누어 보도록 하는 데 유용
+paginate: 5
+
+# Photo previewer settings (PhotoSwipe 5)
+# the options please refer to: https://photoswipe.com/options/
+# 포토 미리보기 설정 (PhotoSwipe 5)
+# 옵션은 여기를 참조하세요: https://photoswipe.com/options/
+photo_previewer:
+ gallery: "section.main"
+ children: "a.photo-swipe"
+ bgOpacity: 0.8
+ padding:
+   top: 20
+   bottom: 40
+   left: 100
+   right: 100
+
+# Click to top settings | 상단으로 이동 설정
+click_to_top:
+  light:
+    background_color: "white"
+    color: "#454545"
+  dark:
+    background_color: "#34323d"
+    color: "#bbb"
+
+# Disqus comments | Disqus 댓글
+disqus:
+  comments: true
+  shortname: "woosm-blog"
+
+# Gisqus comments | Gisqus 댓글 : 커스텀
+# _includes/extensions/comments/giscus.html
+# giscus:
+#   repo: "MANN1309/MANN1309.github.io"
+#   repo_id: "R_kgDOMGOM1g"
+#   category: "Comments"
+#   category_id: "DIC_kwDOMGOM1s4CgDsq"
+#   theme: "preferred_color_scheme"
+#   lang: "ko"
+
+# Gitment comments | Gitment 댓글
+# gitment:
+#   username: "Your GitHub username"
+#   repo: "The repo to store comments"
+#   client_id: "Your client ID"
+#   client_secret: "Your client secret"
+#   redirect_uri: "Your redirect url"   # If you use a custom domain name
+
+# Utterances comments | 블로그 포스트와 관련된 GitHub 저장소의 이슈를 활용하여 댓글을 저장하고 표시
+# See https://utteranc.es/
+# set follow_site_theme true to make utterances' theme follow the site's
+
+# utterances:
+#   repo: "MANN1309/MANN1309.github.io"  # 댓글을 저장할 GitHub 저장소 (owner/repo 형식)
+#   issue_term: "pathname" # 댓글을 연결할 기준 (예: pathname, url, title 등)
+#   label: "utterances comment" # 이슈에 추가될 라벨
+#   theme: "github-light" #댓글 섹션의 테마 (예: github-light, github-dark 등)
+#   follow_site_theme: true # 사이트 테마에 따라 Utterances 테마를 자동으로 변경할지 여부
+
+# Build settings | 빌드 설정
+highlighter: none  # 구문 강조 비활성화
+markdown: kramdown  # Markdown 변환기로 kramdown 사용
+kramdown:
+  input: GFM  # GitHub Flavored Markdown(GFM) 형식 사용
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-spaceship
