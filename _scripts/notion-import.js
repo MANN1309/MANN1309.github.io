@@ -4,12 +4,62 @@ const moment = require("moment");
 const path = require("path");
 const fs = require("fs");
 const axios = require("axios");
+const crypto = require("crypto");
 // or
 // import {NotionToMarkdown} from "notion-to-md";
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
+
+// 이미지 다운로드 및 저장 함수
+async function downloadAndSaveImage(imageUrl, postPath) {
+  try {
+    // 이미지 해시 생성
+    const imageHash = crypto
+      .createHash('md5')
+      .update(imageUrl)
+      .digest('hex')
+      .substring(0, 8);
+
+    // 이미지 확장자 추출 또는 기본값 설정
+    const imageExt = path.extname(new URL(imageUrl).pathname) || '.jpg';
+    
+    // 이미지 저장 경로 설정
+    const imageDirPath = path.join('assets', 'images', 'posts', postPath);
+    const imageFileName = `${imageHash}${imageExt}`;
+    const imagePath = path.join(imageDirPath, imageFileName);
+    
+    // 이미지가 이미 존재하는지 확인
+    if (fs.existsSync(imagePath)) {
+      return `/assets/images/posts/${postPath}/${imageFileName}`;
+    }
+
+    // 디렉토리 생성
+    fs.mkdirSync(imageDirPath, { recursive: true });
+
+    // 이미지 다운로드
+    const response = await axios({
+      method: 'get',
+      url: imageUrl,
+      responseType: 'stream',
+      timeout: 5000
+    });
+
+    // 이미지 저장
+    await new Promise((resolve, reject) => {
+      const writer = fs.createWriteStream(imagePath);
+      response.data.pipe(writer);
+      writer.on('finish', resolve);
+      writer.on('error', reject);
+    });
+
+    return `/assets/images/posts/${postPath}/${imageFileName}`;
+  } catch (error) {
+    console.error(`이미지 다운로드 실패: ${imageUrl}`, error);
+    return '/assets/images/default-image.jpg';
+  }
+}
 
 function escapeCodeBlock(body) {
   const regex = /```([\s\S]*?)```/g;
@@ -138,52 +188,25 @@ title: "${title}"${fmtags}${fmcats}
     md = escapeCodeBlock(md);
     md = replaceTitleOutsideRawBlocks(md);
 
-    const ftitle = `${date}-${title.replaceAll(" ", "-")}.md`;
+    const ftitle = `${date}-${title.replaceAll(" ", "-")}`;
+    const postPath = ftitle.replace('.md', '');
 
-    let index = 0;
-    let edited_md = md.replace(
-      /!\[(.*?)\]\((.*?)\)/g,
-  //노션의 이미지 URL 그대로 사용 (웹 직접참조)
-  //![example image](URL "Title")
-      function (match, altText, imageUrl) {
-        const title = altText ? `"${altText}"` : "";
-        return `![${altText}](${imageUrl} ${title})`; 
-
-//--------------------------------------
-  //기존 이미지 전달방식 (/assets/img/example.png)
-  //![index](/assets/img/example.png)
+    // 이미지 처리 로직 수정
+    let edited_md = md;
+    const imagePattern = /!\[(.*?)\]\((.*?)\)/g;
+    const matches = [...md.matchAll(imagePattern)];
     
-      // function (match, p1, p2, p3) {
-      //   const dirname = path.join("assets/img", ftitle);
-      //   if (!fs.existsSync(dirname)) {
-      //     fs.mkdirSync(dirname, { recursive: true });
-      //   }
-      //   const filename = path.join(dirname, `${index}.png`); 
+    for (const match of matches) {
+      const [fullMatch, altText, imageUrl] = match;
+      const localImagePath = await downloadAndSaveImage(imageUrl, postPath);
+      edited_md = edited_md.replace(
+        fullMatch,
+        `![${altText}](${localImagePath})`
+      );
+    }
 
-
-        axios({
-          method: "get",
-          url: p2,
-          responseType: "stream",
-        })
-          .then(function (response) {
-            let file = fs.createWriteStream(`${filename}`);
-            response.data.pipe(file);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-
-        let res;
-        if (p1 === "") res = "";
-        else res = `_${p1}_`;
-
-        return `![${index++}](/${filename})${res}`;
-      }
-    );
-
-    //writing to file
-    fs.writeFile(path.join(root, ftitle), fm + edited_md, (err) => {
+    // 파일 저장
+    fs.writeFile(path.join(root, `${ftitle}.md`), fm + edited_md, (err) => {
       if (err) {
         console.log(err);
       }
