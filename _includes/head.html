@@ -3,6 +3,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+  
+  <!-- SEO 메타데이터 -->
+  <meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <meta name="keywords" content="{{ page.keywords | default: site.keywords | join: ', ' | escape }}">
+  <meta name="author" content="{{ page.author | default: site.author | escape }}">
+  
+  <!-- Schema.org 메타데이터 -->
+  <meta itemprop="name" content="{{ page.title | escape }}">
+  <meta itemprop="description" content="{{ page.description | default: page.excerpt | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">
+  <meta itemprop="author" content="{{ page.author | default: site.author }}">
+  <meta itemprop="keywords" content="{{ page.tags | join: ',' }}">
+  
+  <!-- Open Graph 메타데이터 -->
+  <meta property="og:title" content="{{ page.title | escape }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <meta property="og:image" content="{{ page.excerpt_image | default: site.og_image | absolute_url }}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  
   {%- seo -%}
   <link rel="icon" href="{{ site.favicon }}">
   <link rel="canonical" href="{{ site.url }}">

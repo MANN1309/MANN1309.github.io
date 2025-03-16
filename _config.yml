@@ -48,9 +48,15 @@
 # 원하는대로 사용자 지정 변수를 만들어서 템플릿에서 {{ site.myvariable }}을 통해
 # 액세스할 수 있습니다.
 
-title: WooSM Blog
+title: "WooSM Blog"
 email: your-email@domain.com
-author: WooSM
+author: "WooSM"
+description: "WooSM의 일상 기록 블로그입니다. 깨달음, 자기개발, 경험 등을 공유합니다."
+keywords: "블로그, 개발, 일상, 기록"
+og_image: "/assets/images/default-og-image.jpg"
+baseurl: ""
+url: "https://MANN1309.github.com"
+favicon: ""
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -79,16 +85,7 @@ author: WooSM
 #
 copyright: "Copyright (cleft) 2024-{currentYear} {WooSM}"
 
-description: >- # this means to ignore newlines until "baseurl:" / 이것은 "baseurl"까지 무시하도록 합니다.
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-# 여기에 새로운 사이트에 대한 멋진 설명을 작성하세요. 이 줄을 _config.yml에서 편집할 수 있습니다.
-# Google 검색 결과에 나타날 것입니다.
 
-baseurl: "" # the subpath of your site, e.g. /blog | 당신의 사이트의 서브 패스, 예: /blog
-url: "https://MANN1309.github.com" # the base hostname & protocol for your site, e.g. https://example.com | 당신의 사이트의 기본 호스트 이름 및 프로토콜, 예: https://example.com
-favicon: "" # the favicon for your site | 당신의 사이트의 파비콘
 
 # Yat date format | Yat 날짜 형식
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this | 사용자 지정하려면 https://shopify.github.io/liquid/filters/date/를 참조하세요.
@@ -107,15 +104,15 @@ header_transparent: true
 # 콘텐츠 너비를 변경하려면 다른 값으로 설정할 수 있습니다
 # content_width: "920px"
 
-# Google analytics - GA4
-# google_analytics: [Measurement ID]
-# enableDNT: "false"
+# Google Analytics 설정
+google_analytics: "G-KQLXPS00S0"  # 여기에 실제 측정 ID를 입력하세요
+enableDNT: "false"
 
 # If you want to generate website sitemap, you can set true | 웹사이트 사이트맵을 생성하려면 true로 설정할 수 있습니다
-sitemap: false
+sitemap: true
 
 # If you want to change site language, you can set lang option | 사이트 언어를 변경하려면 lang 옵션을 설정할 수 있습니다
-lang: "en"  # default lang is en | # 기본 언어는 en입니다
+lang: "ko"  # default lang is en | # 기본 언어는 en입니다
 
 # Translate languges
 # langs refer to https://cloud.google.com/translate/docs/languages
@@ -321,3 +318,10 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-spaceship
+
+feed:
+  path: feed.xml
+  posts_limit: 20
+
+# URL 설정
+permalink: /:categories/:year/:month/:day/:title/
