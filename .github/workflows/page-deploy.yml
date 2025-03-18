@@ -2,6 +2,8 @@ name: "Build and Deploy"
 on:
   repository_dispatch:
     types: [RUN_WORKFLOW_DISPATCH]
+  push:
+    branches: [ main ]
       
 permissions:
   contents: write
@@ -18,12 +20,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 1
     
       - name: Clean Directory
         run: |
+          mkdir -p assets/imgs
           for file in assets/imgs/*
           do
               if [[ $file != "assets/imgs/favicons" ]]
@@ -31,6 +34,7 @@ jobs:
                   rm -rf "$file"
               fi
           done
+          mkdir -p _posts
           rm -rf _posts/*
       
       - uses: actions/setup-node@v3
@@ -59,37 +63,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:           
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           ref: main
-          fetch-depth: 1
-          # 서브모듈 관련 설정 제거
-          # submodules: true  # 이 줄을 주석 처리하거나 삭제
+          fetch-depth: 0
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v3
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1' # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
+          ruby-version: '3.1'
           bundler-cache: true
 
+      - name: Install Dependencies
+        run: bundle install
+
       - name: Build site
-        run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
+        run: bundle exec jekyll b -d "_site"
         env:
           JEKYLL_ENV: "production"
 
       - name: Test site
         run: |
-          bundle exec htmlproofer _site --disable-external --checks "html" --allow_hash_href
+          bundle exec htmlproofer _site --disable-external --check-html --allow_hash_href
 
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: "_site${{ steps.pages.outputs.base_path }}"
+          path: "_site"
 
   deploy:
     environment:
@@ -101,3 +105,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
