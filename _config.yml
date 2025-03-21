@@ -322,9 +322,11 @@ plugins:
 feed:
   path: feed.xml
   posts_limit: 20
+  categories: null
+  tags: null
+  author: true
+  language: ko-KR
+  content_type: application/atom+xml
 
 # URL 설정
 permalink: /:categories/:year/:month/:day/:title/
-
-# Google Search Console 설정
-google_site_verification: "구글에서_제공한_메타태그_코드"
