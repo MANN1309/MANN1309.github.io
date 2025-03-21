@@ -13,6 +13,7 @@ gem 'html-proofer'    # HTML 검사
 
 # Jekyll 플러그인
 group :jekyll_plugins do
+  gem 'jekyll-feed'      # RSS 피드
   gem 'jekyll-seo-tag'   # SEO 최적화
   gem 'jekyll-sitemap'   # 사이트맵
   gem 'jekyll-paginate'  # 페이지네이션
