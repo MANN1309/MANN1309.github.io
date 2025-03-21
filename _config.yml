@@ -325,3 +325,6 @@ feed:
 
 # URL 설정
 permalink: /:categories/:year/:month/:day/:title/
+
+# Google Search Console 설정
+google_site_verification: "구글에서_제공한_메타태그_코드"

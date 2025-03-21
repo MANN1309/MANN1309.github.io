@@ -107,3 +107,8 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Ping Google about updated sitemap
+        if: success()
+        run: |
+          curl -X GET "https://www.google.com/ping?sitemap=https://mann1309.github.io/sitemap.xml"
