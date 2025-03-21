@@ -313,12 +313,12 @@ kramdown:
   input: GFM  # GitHub Flavored Markdown(GFM) 형식 사용
 
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-spaceship
 
+# RSS Feed 설정
 feed:
   path: feed.xml
   posts_limit: 20
@@ -326,7 +326,6 @@ feed:
   tags: null
   author: true
   language: ko-KR
-  content_type: application/atom+xml
 
 # URL 설정
 permalink: /:categories/:year/:month/:day/:title/
